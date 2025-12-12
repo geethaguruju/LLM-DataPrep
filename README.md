@@ -6,19 +6,19 @@ This project demonstrates a robust, scalable Big Data ETL pipeline designed to p
 
 ## Objectives Covered
 
-* **Objective 1-5:** Data Ingestion, Cleaning, Near-Deduplication (LSH), and Tokenization using PySpark.
-* **Objective 6 (Orchestration):** Airflow orchestrates the sequential execution of PySpark jobs via SSH.
-* **Objective 7 (Monitoring):** Verified using YARN Application History on Dataproc (screenshots required).
-* **Objective 8 (Analysis/Viz):** Interactive data quality dashboard using Streamlit/Plotly.
+* **1 (Data Processing):** Data Ingestion, Cleaning, Near-Deduplication (LSH), and Tokenization using PySpark.
+* **2 (Orchestration):** Airflow orchestrates the sequential execution of PySpark jobs via SSH.
+* **3 (Monitoring):** Verified using YARN Application History on Dataproc (screenshots required).
+* **4 (Analysis/Viz):** Interactive data quality dashboard using Streamlit/Plotly.
 
 
 ## Part 1: Final Setup and Execution
 
-### 1. Prerequisite Check (Local Machine)
+### 1. Prerequisite Check
 
 Before launching the dashboard or pipeline, ensure the following is complete:
 
-1.  **Environment Active:** Your Python environment (`airflow_env`) is active.
+1.  **Environment Active:** The Python environment (`airflow_env`) is active.
     ```bash
     conda activate airflow_env
     ```
@@ -28,30 +28,16 @@ Before launching the dashboard or pipeline, ensure the following is complete:
     airflow scheduler &
     airflow api-server -p 8080 & 
     ```
-3.  **Local Data Exists:** The final processed Parquet data is in the local folder for Streamlit (e.g., `./temp_streamlit_data`).
-4.  **Airflow Login:** You are logged into the Airflow UI (`http://localhost:8080`) using the generated Admin password.
+3.  **Data Exists:** The final processed Parquet data is in the folder for Streamlit (e.g., `./temp_streamlit_data`).
+4.  **Airflow Login:** We are logged into the Airflow UI (`http://localhost:8080`) using the generated Admin password.
 
-### 2. Configure Remote Dataproc Connection (Crucial for Orchestration)
 
-This link allows the local Airflow instance to trigger Spark jobs on the remote Dataproc cluster.
+### 2. Trigger the Orchestrated ETL Pipeline
 
-1.  In the Airflow UI, go to **Admin > Connections**.
-2.  Click **+** to add a new record.
-3.  Configure the SSH connection:
-    * **Conn Id:** `dataprochost`
-    * **Conn Type:** `SSH`
-    * **Host:** `[Your Dataproc Public IP, e.g., 34.55.35.51]`
-    * **Login:** `gg3039_nyu_edu`
-    * **Auth Type:** `SSH Key` or `Key File` (pointing to your local private key).
-4.  Click **Save & Test**.
-
-### 3. Trigger the Orchestrated ETL Pipeline
-
-Once the connection is saved, the pipeline can be launched:
+Once connected, the pipeline can be launched:
 
 1.  In the Airflow UI, find the **`llm_dataprep_ssh_pipeline`** DAG.
-2.  Toggle the DAG **ON**.
-3.  Click the **Trigger DAG** button (play icon).
+2.  Select **Trigger DAG** manually to run the dag.
 
 The tasks will turn green as they successfully execute `spark-submit` commands on the remote cluster, demonstrating **Objective 6**. 
 
@@ -67,6 +53,13 @@ Ensure the necessary visualization tools are installed:
 ```bash
 pip install streamlit pandas pyarrow plotly 
 ```
+### 2. Launching Dashboard
+
+The Streamlit data dashboard can be launched by using:
+```bash
+python3 data_dashboard.py 
+```
+
 
 ## Training & Inference for TinyLlama Bio SFT
 

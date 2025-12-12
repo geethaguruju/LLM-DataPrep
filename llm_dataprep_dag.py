@@ -10,7 +10,7 @@ SPARK_ARGS = (
     "--num-executors 16 "
 )
 # This is the remote path on the Dataproc master node where your scripts live
-PROJECT_DIR = '/home/gg3039_nyu_edu/project/code/' 
+PROJECT_DIR = '/home/project/code/' 
 
 with DAG(
     dag_id='llm_dataprep_ssh_pipeline',

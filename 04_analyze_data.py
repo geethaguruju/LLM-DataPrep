@@ -6,8 +6,8 @@ import json
 import os
 
 # --- Configuration ---
-INPUT_HDFS_PATH = "hdfs:///user/gg3039_nyu_edu/LLM_DataPrep/final/llm_dataset"
-LOCAL_OUTPUT_DIR = "/home/gg3039_nyu_edu/project/raw_data/"
+INPUT_HDFS_PATH = "hdfs:///user/LLM_DataPrep/final/llm_dataset"
+LOCAL_OUTPUT_DIR = "/home/project/raw_data/"
 # --- End Configuration ---
 
 spark = SparkSession.builder.appName("Step4_DataAnalysis").getOrCreate()
