@@ -69,6 +69,7 @@ Open the python Notebook Bigdata.ipynb
 pip install transformers datasets accelerate sentencepiece bitsandbytes
 
 2. Your bio-sft folder should look like:
+```
 tinyllama-bio-sft/
  ├── config.json
  ├── tokenizer.json
@@ -76,19 +77,20 @@ tinyllama-bio-sft/
  ├── special_tokens_map.json
  ├── pytorch_model.bin (or adapter_model.bin)
  └── generation_config.json
+```
 
-3. Training the LLM
+4. Training the LLM
 Step 1 — Prepare Dataset
 Use the parquet dataset that was run through the pipeline
 Step 2 — Run the Training Notebook
 Run the next code blocks of Bigdata.ipynb
 
-4. Inside the notebook you will:
+5. Inside the notebook you will:
 Load TinyLlama
 Train with LoRA or full fine-tuning
 Save the final model to: tinyllama-bio-sft/
 
-5. At any point, you can save it manually:
+6. At any point, you can save it manually:
 trainer.save_model("tinyllama-bio-sft/")
 tokenizer.save_pretrained("tinyllama-bio-sft/")
 
@@ -107,8 +109,9 @@ These are ALL required for inference.
 Open your inference notebook:
 '' Inferencing.ipynb''
 
-```
 Make sure your model path is correct:
+```
+
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
