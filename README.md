@@ -42,7 +42,7 @@ Once connected, the pipeline can be launched:
 The tasks will turn green as they successfully execute `spark-submit` commands on the remote cluster, demonstrating **Objective 6**. 
 
 
-## Part 2: Data Analysis and Visualization (Objective 8)
+## Part 2: Data Analysis and Visualization
 
 This section launches the interactive dashboard for demonstrating data quality and analysis.
 
@@ -60,8 +60,7 @@ The Streamlit data dashboard can be launched by using:
 python3 data_dashboard.py 
 ```
 
-
-## Training & Inference for TinyLlama Bio SFT
+## Part 3:Training & Inference for TinyLlama Bio SFT
 
 ### Follow the steps below to set up your environment, train the model, and run inference.
 
