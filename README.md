@@ -60,7 +60,7 @@ The Streamlit data dashboard can be launched by using:
 python3 data_dashboard.py 
 ```
 
-## Part 3:Training & Inference for TinyLlama Bio SFT
+## Part 3: Training & Inference for TinyLlama Bio SFT
 
 ### Follow the steps below to set up your environment, train the model, and run inference.
 
